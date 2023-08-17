@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, Image } from "react-native";
 import { Card } from "react-native-paper";
 import styled from "styled-components/native";
 import { SvgXml } from "react-native-svg";
@@ -45,6 +45,7 @@ const SectionEnd = styled(View)`
   flex: 1;
   flex-direction: row;
   justify-content: flex-end;
+  align-items: center;
 `;
 
 const Open = styled(SvgXml)`
@@ -59,9 +60,9 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
       "https://www.foodiesfeed.com/wp-content/uploads/2019/06/top-view-for-box-of-2-burgers-home-made-600x899.jpg",
     ],
     address = "100, some random street",
-    isOpenNow = false,
+    isOpenNow = true,
     rating = 5,
-    //  isClosedTemporarely,
+    isClosedTemporarely = true,
   } = restaurant;
 
   const ratingArray = Array.from(new Array(Math.floor(rating)));
@@ -83,7 +84,15 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
               ))}
             </Rating>
             <SectionEnd>
-              {isOpenNow && <Open xml={open} width={20} height={20} />}
+              {isClosedTemporarely && (
+                <Text variant="label" style={{ color: "red" }}>
+                  CLOSED TEMPORARELY{" "}
+                </Text>
+              )}
+              <View style={{ padding: 10 }}>
+                {isOpenNow && <Open xml={open} width={20} height={20} />}
+              </View>
+              <Image style={{ width: 20, height: 20 }} src={icon} />
             </SectionEnd>
           </Section>
           <Address variant="titleLarge">{address}</Address>
