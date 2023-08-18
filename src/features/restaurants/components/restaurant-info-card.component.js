@@ -5,6 +5,7 @@ import styled from "styled-components/native";
 import { SvgXml } from "react-native-svg";
 import star from "../../../../assets/star";
 import open from "../../../../assets/open";
+import { Spacer } from "../../../components/spacer/spacer.component";
 
 const RestaurantCard = styled(Card)`
   background-color: ${(props) => props.theme.colors.bg.primary};
@@ -48,10 +49,6 @@ const SectionEnd = styled(View)`
   align-items: center;
 `;
 
-const Open = styled(SvgXml)`
-  flex-direction: row;
-`;
-
 export const RestaurantInfoCard = ({ restaurant = {} }) => {
   const {
     name = "Some restaurant",
@@ -67,6 +64,10 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
 
   const ratingArray = Array.from(new Array(Math.floor(rating)));
 
+  ratingArray.forEach((element, index) => {
+    ratingArray[index] = index;
+  });
+
   return (
     <>
       <RestaurantCard>
@@ -79,20 +80,24 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
           <Title>{name}</Title>
           <Section>
             <Rating>
-              {ratingArray.map(() => (
-                <SvgXml xml={star} width={20} height={20} />
+              {ratingArray.map((number) => (
+                <SvgXml xml={star} width={20} height={20} key={number} />
               ))}
             </Rating>
             <SectionEnd>
-              {isClosedTemporarely && (
-                <Text variant="label" style={{ color: "red" }}>
-                  CLOSED TEMPORARELY{" "}
-                </Text>
-              )}
-              <View style={{ padding: 10 }}>
-                {isOpenNow && <Open xml={open} width={20} height={20} />}
-              </View>
-              <Image style={{ width: 20, height: 20 }} src={icon} />
+              <Spacer position="left" size="medium">
+                {isClosedTemporarely && (
+                  <Text variant="label" style={{ color: "red" }}>
+                    CLOSED TEMPORARELY{" "}
+                  </Text>
+                )}
+              </Spacer>
+              <Spacer position="left" size="medium">
+                {isOpenNow && <SvgXml xml={open} width={20} height={20} />}
+              </Spacer>
+              <Spacer position="left" size="large">
+                <Image style={{ width: 20, height: 20 }} src={icon} />
+              </Spacer>
             </SectionEnd>
           </Section>
           <Address variant="titleLarge">{address}</Address>
