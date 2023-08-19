@@ -32,7 +32,7 @@ export const RestaurantsScreen = () => {
             value={searchQuery}
           />
         </SearchBox>
-        <Spacer type="sides" size="medium">
+        <Spacer position="horizontal" size="medium">
           <RestaurantList
             data={[
               { name: 1 },

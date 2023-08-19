@@ -51,15 +51,15 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
               ))}
             </Rating>
             <SectionEnd>
-              <Spacer type="single" position="left" size="medium">
+              <Spacer position="left" size="medium">
                 {isClosedTemporarely && (
                   <Text variant="error">CLOSED TEMPORARELY </Text>
                 )}
               </Spacer>
-              <Spacer type="single" position="left" size="medium">
+              <Spacer position="left" size="medium">
                 {isOpenNow && <SvgXml xml={open} width={20} height={20} />}
               </Spacer>
-              <Spacer type="single" position="left" size="large">
+              <Spacer position="left" size="large">
                 <Icon src={icon} />
               </Spacer>
             </SectionEnd>
