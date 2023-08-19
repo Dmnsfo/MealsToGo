@@ -14,6 +14,8 @@ const positionVariant = {
   right: "marginRight",
   bottom: "marginBottom",
   left: "marginLeft",
+  horizontal: "marginHorizontal",
+  vertical: "marginVertical",
 };
 
 const getVariant = (position, size) => {
@@ -27,12 +29,12 @@ const SpacerView = styled(View)`
   ${({ variant }) => variant}
 `;
 
-export const SingleSpacer = ({ position, size, children }) => {
+export const Spacer = ({ position, size, children }) => {
   const variant = getVariant(position, size);
   return <SpacerView variant={variant}>{children}</SpacerView>;
 };
 
-SingleSpacer.defaultProps = {
+Spacer.defaultProps = {
   position: "top",
   size: "small",
 };

@@ -4,7 +4,7 @@ import { Text, View, FlatList } from "react-native";
 import { Searchbar } from "react-native-paper";
 import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
 import styled from "styled-components/native";
-import { Spacer } from "../../../components/spacer/spacer.index.component";
+import { Spacer } from "../../../components/spacer/spacer.component";
 import { SafeContainer } from "../../../components/utility/safe-area.component";
 
 const SearchBox = styled(View)`

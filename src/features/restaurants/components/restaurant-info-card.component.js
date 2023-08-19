@@ -2,7 +2,7 @@ import React from "react";
 import { SvgXml } from "react-native-svg";
 import star from "../../../../assets/star";
 import open from "../../../../assets/open";
-import { Spacer } from "../../../components/spacer/spacer.index.component";
+import { Spacer } from "../../../components/spacer/spacer.component";
 import { Text } from "../../../components/typography/text.component";
 import {
   RestaurantCard,
@@ -25,7 +25,7 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
     address = "100, some random street",
     isOpenNow = true,
     rating = 5,
-    isClosedTemporarely = true,
+    isClosedTemporarely = false,
   } = restaurant;
 
   const ratingArray = Array.from(new Array(Math.floor(rating)));
