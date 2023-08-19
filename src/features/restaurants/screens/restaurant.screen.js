@@ -16,6 +16,12 @@ const SearchBox = styled(View)`
   backgroundcolor: ${(props) => props.theme.colors.bg.primary};
 `;
 
+const RestaurantList = styled(FlatList).attrs({
+  contentContainerStyle: {
+    paddingBottom: 80,
+  },
+})``;
+
 export const RestaurantsScreen = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const onChangeSearch = (query) => setSearchQuery(query);
@@ -30,7 +36,7 @@ export const RestaurantsScreen = () => {
           />
         </SearchBox>
         <Spacer type="sides" size="medium">
-          <FlatList
+          <RestaurantList
             data={[
               { name: 1 },
               { name: 2 },
