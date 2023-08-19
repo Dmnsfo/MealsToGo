@@ -27,12 +27,12 @@ const SpacerView = styled(View)`
   ${({ variant }) => variant}
 `;
 
-export const Spacer = ({ position, size, children }) => {
+export const SingleSpacer = ({ position, size, children }) => {
   const variant = getVariant(position, size);
   return <SpacerView variant={variant}>{children}</SpacerView>;
 };
 
-Spacer.defaultProps = {
+SingleSpacer.defaultProps = {
   position: "top",
   size: "small",
 };

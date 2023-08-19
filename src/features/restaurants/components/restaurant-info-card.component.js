@@ -2,7 +2,7 @@ import React from "react";
 import { SvgXml } from "react-native-svg";
 import star from "../../../../assets/star";
 import open from "../../../../assets/open";
-import { Spacer } from "../../../components/spacer/spacer.component";
+import { Spacer } from "../../../components/spacer/spacer.index.component";
 import { Text } from "../../../components/typography/text.component";
 import {
   RestaurantCard,
@@ -51,15 +51,15 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
               ))}
             </Rating>
             <SectionEnd>
-              <Spacer position="left" size="medium">
+              <Spacer type="single" position="left" size="medium">
                 {isClosedTemporarely && (
                   <Text variant="error">CLOSED TEMPORARELY </Text>
                 )}
               </Spacer>
-              <Spacer position="left" size="medium">
+              <Spacer type="single" position="left" size="medium">
                 {isOpenNow && <SvgXml xml={open} width={20} height={20} />}
               </Spacer>
-              <Spacer position="left" size="large">
+              <Spacer type="single" position="left" size="large">
                 <Icon src={icon} />
               </Spacer>
             </SectionEnd>
