@@ -1,15 +1,11 @@
 import React, { useState } from "react";
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
-import { StatusBar, SafeAreaView, Text, View, FlatList } from "react-native";
+import { Text, View, FlatList } from "react-native";
 import { Searchbar } from "react-native-paper";
 import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
 import styled from "styled-components/native";
 import { Spacer } from "../../../components/spacer/spacer.index.component";
-
-const SafeContainer = styled(SafeAreaView)`
-  flex: 1;
-  ${StatusBar.currentHeight && `margin-top: ${StatusBar.currentHeight}px`};
-`;
+import { SafeContainer } from "../../../components/utility/safe-area.component";
 
 const SearchBox = styled(View)`
   padding: ${(props) => props.theme.space[3]};
@@ -19,6 +15,7 @@ const SearchBox = styled(View)`
 const RestaurantList = styled(FlatList).attrs({
   contentContainerStyle: {
     paddingBottom: 80,
+    paddingHorizontal: 4,
   },
 })``;
 
