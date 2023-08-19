@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
 import { Text, View, FlatList } from "react-native";
 import { Searchbar } from "react-native-paper";
@@ -6,6 +6,7 @@ import { RestaurantInfoCard } from "../components/restaurant-info-card.component
 import styled from "styled-components/native";
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { SafeContainer } from "../../../components/utility/safe-area.component";
+import { RestaurantContext } from "../../../services/restaurants/restaurants.context";
 
 const SearchBox = styled(View)`
   padding: ${(props) => props.theme.space[3]};
@@ -22,6 +23,7 @@ const RestaurantList = styled(FlatList).attrs({
 export const RestaurantsScreen = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const onChangeSearch = (query) => setSearchQuery(query);
+  const restaurantContext = useContext(RestaurantContext);
   return (
     <>
       <SafeContainer>
@@ -34,24 +36,9 @@ export const RestaurantsScreen = () => {
         </SearchBox>
         <Spacer position="horizontal" size="medium">
           <RestaurantList
-            data={[
-              { name: 1 },
-              { name: 2 },
-              { name: 3 },
-              { name: 4 },
-              { name: 5 },
-              { name: 6 },
-              { name: 7 },
-              { name: 8 },
-              { name: 9 },
-              { name: 10 },
-              { name: 11 },
-              { name: 12 },
-              { name: 13 },
-              { name: 14 },
-            ]}
+            data={restaurantContext.restaurants}
             renderItem={() => (
-              <Spacer type="single" position="bottom" size="large">
+              <Spacer position="bottom" size="large">
                 <RestaurantInfoCard />
               </Spacer>
             )}
