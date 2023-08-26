@@ -7,6 +7,7 @@ import { theme } from "./src/infrastructure/theme";
 import { ThemeProvider } from "styled-components/native";
 import { SafeContainer } from "./src/components/utility/safe-area.component";
 import { Ionicons } from "@expo/vector-icons";
+import { LocationContextProvider } from "./src/services/location/location.context";
 
 import {
   useFonts as UseOswald,
@@ -73,27 +74,29 @@ export default function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <RestaurantContextProvider>
-          <NavigationContainer>
-            <Tab.Navigator screenOptions={createScreenOptions}>
-              <Tab.Screen
-                name="Restaurants"
-                component={RestaurantsScreen}
-                options={{ headerShown: false }}
-              />
-              <Tab.Screen
-                name="Map"
-                component={Map}
-                options={{ headerShown: false }}
-              />
-              <Tab.Screen
-                name="Settings"
-                component={SettingsScreen}
-                options={{ headerShown: false }}
-              />
-            </Tab.Navigator>
-          </NavigationContainer>
-        </RestaurantContextProvider>
+        <LocationContextProvider>
+          <RestaurantContextProvider>
+            <NavigationContainer>
+              <Tab.Navigator screenOptions={createScreenOptions}>
+                <Tab.Screen
+                  name="Restaurants"
+                  component={RestaurantsScreen}
+                  options={{ headerShown: false }}
+                />
+                <Tab.Screen
+                  name="Map"
+                  component={Map}
+                  options={{ headerShown: false }}
+                />
+                <Tab.Screen
+                  name="Settings"
+                  component={SettingsScreen}
+                  options={{ headerShown: false }}
+                />
+              </Tab.Navigator>
+            </NavigationContainer>
+          </RestaurantContextProvider>
+        </LocationContextProvider>
       </ThemeProvider>
     </>
   );
