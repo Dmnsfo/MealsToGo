@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
-import { FlatList } from "react-native";
+import { FlatList, TouchableOpacity } from "react-native";
 import { ActivityIndicator } from "react-native-paper";
 import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
 import styled from "styled-components/native";
@@ -26,7 +26,7 @@ const RestaurantList = styled(FlatList).attrs({
   },
 })``;
 
-export const RestaurantsScreen = () => {
+export const RestaurantsScreen = ({ navigation }) => {
   const { isLoading, restaurants } = useContext(RestaurantContext);
   return (
     <>
@@ -41,9 +41,15 @@ export const RestaurantsScreen = () => {
           <RestaurantList
             data={restaurants}
             renderItem={({ item }) => (
-              <Spacer position="bottom" size="large">
-                <RestaurantInfoCard restaurant={item} />
-              </Spacer>
+              <TouchableOpacity
+                onPress={() =>
+                  navigation.navigate("RestaurantDetail", { restaurant: item })
+                }
+              >
+                <Spacer position="bottom" size="large">
+                  <RestaurantInfoCard restaurant={item} />
+                </Spacer>
+              </TouchableOpacity>
             )}
             keyExtractor={(item) => item.name}
           />
