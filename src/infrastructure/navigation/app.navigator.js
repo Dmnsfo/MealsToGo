@@ -5,6 +5,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { Text } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { RestaurantsNavigator } from "./restaurants.navigator";
+import { MapScreen } from "../../features/map/screens/map.screen";
 
 const TAB_ICON = {
   Restaurants: "md-restaurant",
@@ -27,14 +28,6 @@ const createScreenOptions = ({ route }) => ({
   },
 });
 
-function Map() {
-  return (
-    <SafeContainer>
-      <Text>map</Text>
-    </SafeContainer>
-  );
-}
-
 function SettingsScreen() {
   return (
     <SafeContainer>
@@ -56,7 +49,7 @@ export const AppNavigator = () => {
         />
         <Tab.Screen
           name="Map"
-          component={Map}
+          component={MapScreen}
           options={{ headerShown: false }}
         />
         <Tab.Screen
