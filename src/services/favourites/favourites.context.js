@@ -35,9 +35,10 @@ export const FavouritesContextProvider = ({ children }) => {
   };
 
   const remove = (restaurant) => {
-    const newFavourites = favourites.filter((x) => {
-      x.placeId !== restaurant.placeId;
-    });
+    const newFavourites = favourites.filter(
+      // eslint-disable-next-line prettier/prettier
+      (x) => x.placeId !== restaurant.placeId
+    );
 
     setFavourites(newFavourites);
   };
